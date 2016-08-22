@@ -1,0 +1,2 @@
+# wifiInfoStored
+STM32F103C8系列的一个使用FLASH来保存wifi名和密码的C++封装,包含上下位机测试程序
