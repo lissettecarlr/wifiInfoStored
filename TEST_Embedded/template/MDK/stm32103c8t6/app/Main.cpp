@@ -43,16 +43,22 @@ int main()
 //				com<<"name:"<<Listen.WifiName<<"\n";
 //				com<<"password:"<<Listen.WifiPassword<<"\n";
 				WifiStore.Save(Listen.WifiName,Listen.WifiPassword);
-				WifiStore.Load(name,pass);
-				com<<"name:"<<name<<"\n";
-				com<<"password:"<<pass<<"\n";
+				com<<"SAVE succed "<<"\n";
+				
 			}
 			else
 			{
 				com<<"Updata Error \n";
 			}	
 		}
-		
+		if(Listen.IsSendWifiInfo)
+		{
+			Listen.IsSendWifiInfo=false;
+			WifiStore.Load(name,pass);
+			com<<"name:"<<name<<"\n";
+			com<<"password:"<<pass<<"\n";
+			
+		}
 		
 	}
 	delete(name);

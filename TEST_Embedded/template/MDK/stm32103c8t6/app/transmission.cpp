@@ -5,6 +5,7 @@ Transmission::Transmission()
 	 WifiName = new char[32];
 	 WifiPassword = new char[32];
 	 RcvSucceed=false;
+	 IsSendWifiInfo=false;
 }
 
 Transmission::~Transmission()
@@ -54,8 +55,18 @@ bool Transmission::GetData(USART &ListeningCOM)
 					return false;
 				}
 				
+			}else if(ch == 0x01)
+			{
+				ListeningCOM.GetReceivedData(&ch,1);
+				if(ch == 0x01)
+				{
+					IsSendWifiInfo=true;
+					return 1;
+				}
+				else
+					return false;
 			}
-			else 
+			else
 				return 0;
 		}
 		else
